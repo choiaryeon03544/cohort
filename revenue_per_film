@@ -1,0 +1,15 @@
+# 영화 별 매출
+
+SELECT 
+	film.film_id,
+	film.title,
+	film.rental_rate * COUNT(*) total_revenue
+
+FROM rental, film, inventory 
+
+WHERE 
+			    film.film_id = inventory.film_id
+			AND inventory.inventory_id = rental.inventory_id
+
+GROUP BY 1
+;
