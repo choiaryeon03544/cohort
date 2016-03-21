@@ -46,3 +46,25 @@ WHERE
 		AND payment.rental_id = rental.rental_id
 
 ;
+
+
+
+# WHERE 을 JOIN으로 
+
+SELECT 
+		rental.*,
+		LEFT(first_rental.first_time,7) Month 
+
+FROM 
+		rental
+
+			JOIN first_rental
+			ON rental.customer_id = first_rental.customer_id
+			
+			JOIN cohort_size 
+			ON cohort_szie.month = LEFT(first_rental.fitst_time,7)
+			
+			JOIN payment
+			ON payment.rental_id = rental.rental_id
+
+;
