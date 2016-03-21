@@ -28,3 +28,21 @@ FROM first_rental
 
 GROUP BY 1
 ;
+
+
+#
+
+SELECT 
+		rental.*,
+		LEFT(first_rental.first_time,7) Month 
+
+FROM 
+		rental, first_rental, cohort_size, payment 
+
+
+WHERE
+		rental.customer_id = first_rental.customer_id
+		AND cohort_size.month = LEFT(first_rental.first_time,7)
+		AND payment.rental_id = rental.rental_id
+
+;
